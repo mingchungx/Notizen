@@ -91,6 +91,7 @@ Package.resolved
 .build/
 
 # SwiftPM Xcode project
+*.xcodeproj/
 *.xcodeproj/project.xcworkspace/
 *.xcodeproj/xcuserdata/
 
