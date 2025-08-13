@@ -1,0 +1,134 @@
+# =====================
+# Kotlin / Gradle
+# =====================
+.gradle/
+build/
+out/
+**/build/
+**/captures/
+*.iml
+.gradle/
+.gradle-*/ 
+*.log
+
+# Gradle wrapper
+gradle/wrapper/gradle-wrapper.jar
+
+# Dependency caches
+**/.idea/libraries/
+**/.idea/modules.xml
+**/.idea/workspace.xml
+**/.idea/gradle.xml
+**/.idea/dictionaries/
+**/.idea/vcs.xml
+
+# Kotlin daemon
+kotlin-daemon-*/ 
+kotlin/*.kts.lock
+
+# =====================
+# Android
+# =====================
+local.properties
+*.keystore
+*.jks
+*.apk
+*.ap_ 
+*.aab
+captures/
+.externalNativeBuild
+.cxx
+*.ndk-build
+*.so
+*.dex
+*.class
+*.jar
+
+# Android Studio
+.idea/
+*.iml
+*.hprof
+
+# =====================
+# iOS / macOS
+# =====================
+.DS_Store
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+xcuserdata/
+*.xccheckout
+*.xcscmblueprint
+DerivedData/
+build/
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+*.moved-aside
+*.xcuserstate
+
+# CocoaPods (if used)
+Pods/
+Podfile.lock
+*.xcworkspace
+
+# Tuist
+/.tuist/Cache/
+**/Generated/
+**/Tuist/Dependencies/
+**/.tuist/Cache/
+
+# Carthage (if used)
+Carthage/Build/
+
+# Swift Package Manager
+Packages/
+Package.resolved
+.build/
+
+# SwiftPM Xcode project
+*.xcodeproj/project.xcworkspace/
+*.xcodeproj/xcuserdata/
+
+# =====================
+# macOS
+# =====================
+.AppleDouble
+.LSOverride
+Icon?
+._*
+.Spotlight-V100
+.Trashes
+*.swp
+*.lock
+*.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.TemporaryItems
+.DocumentRevisions-V100
+.fseventsd
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# =====================
+# IDEs
+# =====================
+.vscode/
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# =====================
+# Logs
+# =====================
+*.log
