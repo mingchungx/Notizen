@@ -69,6 +69,7 @@ build/
 *.dSYM
 *.moved-aside
 *.xcuserstate
+iosApp/Frameworks
 
 # CocoaPods (if used)
 Pods/

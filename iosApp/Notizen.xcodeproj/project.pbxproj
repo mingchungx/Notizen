@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08303437B21A13A3653E9091 /* Shared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A73685044049FDCBEAA17508 /* Shared.framework */; };
 		31CDBBF4FF1F9FDA975B9A0C /* Kingfisher_Kingfisher.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = E7FCFF88B9A0055CFF04F08C /* Kingfisher_Kingfisher.bundle */; };
 		4777C3C61BBB8475FFBAAB35 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DB57A67008614AC898880E2 /* Kingfisher.framework */; };
-		A1AE53CF9F2BEF4FA4BE8353 /* Shared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A939FD02973047E72B56C7E5 /* Shared.framework */; };
 		E163E36550C2618FF867F845 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0315BE6A30857E6E214122 /* ContentView.swift */; };
 		F7C6CF3C96C4B74D175F0F16 /* Notizen-App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF57C21CC2145CB67368A6E /* Notizen-App.swift */; };
 		FCA9EA822CCB44010E9A3D5D /* Kingfisher_Kingfisher.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E7FCFF88B9A0055CFF04F08C /* Kingfisher_Kingfisher.bundle */; };
@@ -45,7 +45,7 @@
 		6AF44E62C96456C6ECE27539 /* Notizen.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Notizen.xcconfig; sourceTree = "<group>"; };
 		7AC7DDA31A43AAB1304225B9 /* Notizen-Project.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Notizen-Project.xcconfig"; sourceTree = "<group>"; };
 		A26EA9FFA669C82FEFEE3CA0 /* Notizen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notizen.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A939FD02973047E72B56C7E5 /* Shared.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Shared.framework; sourceTree = "<group>"; };
+		A73685044049FDCBEAA17508 /* Shared.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Shared.framework; sourceTree = "<group>"; };
 		DE9354B9F363D9F699327724 /* Notizen-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Notizen-Info.plist"; sourceTree = "<group>"; };
 		E7FCFF88B9A0055CFF04F08C /* Kingfisher_Kingfisher.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Kingfisher_Kingfisher.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -56,7 +56,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4777C3C61BBB8475FFBAAB35 /* Kingfisher.framework in Frameworks */,
-				A1AE53CF9F2BEF4FA4BE8353 /* Shared.framework in Frameworks */,
+				08303437B21A13A3653E9091 /* Shared.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,7 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				2CD447EF7453E9F1842CA0ED /* Derived */,
-				FA79B16E2BBE0DCDDF5F5293 /* shared */,
+				E2083D859AD012CB9FCEB285 /* Frameworks */,
 				4B828B0CF034DE4249B5CCC4 /* Sources */,
 				2E4BC3EA383E325D50868B33 /* xcconfigs */,
 			);
@@ -109,14 +109,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8D751B709DA7F2B19CF584EE /* iosSimulatorArm64 */ = {
-			isa = PBXGroup;
-			children = (
-				A3A8252064D6F648220866B9 /* debugFramework */,
-			);
-			path = iosSimulatorArm64;
-			sourceTree = "<group>";
-		};
 		931D5215B1E75BBA17ACA9A7 /* Notizen */ = {
 			isa = PBXGroup;
 			children = (
@@ -126,28 +118,12 @@
 			path = Notizen;
 			sourceTree = "<group>";
 		};
-		93AA3DEF70BBFEED8220E03D /* build */ = {
-			isa = PBXGroup;
-			children = (
-				FDD6337F912228490ECABCA6 /* bin */,
-			);
-			path = build;
-			sourceTree = "<group>";
-		};
 		973D8E523354012F65D8C2DA = {
 			isa = PBXGroup;
 			children = (
 				48B3D3FED11BCF3A083BE585 /* Project */,
 				570BBE30011982EB03A7A97E /* Products */,
 			);
-			sourceTree = "<group>";
-		};
-		A3A8252064D6F648220866B9 /* debugFramework */ = {
-			isa = PBXGroup;
-			children = (
-				A939FD02973047E72B56C7E5 /* Shared.framework */,
-			);
-			path = debugFramework;
 			sourceTree = "<group>";
 		};
 		BD8C34842F4FF5B1248EC7BA /* Views */ = {
@@ -166,21 +142,12 @@
 			path = InfoPlists;
 			sourceTree = "<group>";
 		};
-		FA79B16E2BBE0DCDDF5F5293 /* shared */ = {
+		E2083D859AD012CB9FCEB285 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				93AA3DEF70BBFEED8220E03D /* build */,
+				A73685044049FDCBEAA17508 /* Shared.framework */,
 			);
-			name = shared;
-			path = ../shared;
-			sourceTree = "<group>";
-		};
-		FDD6337F912228490ECABCA6 /* bin */ = {
-			isa = PBXGroup;
-			children = (
-				8D751B709DA7F2B19CF584EE /* iosSimulatorArm64 */,
-			);
-			path = bin;
+			path = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -329,7 +296,7 @@
 				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/../shared/build/bin/iosSimulatorArm64/debugFramework",
+					"$(SRCROOT)/Frameworks",
 				);
 				INFOPLIST_FILE = "Derived/InfoPlists/Notizen-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -359,7 +326,7 @@
 				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/../shared/build/bin/iosSimulatorArm64/debugFramework",
+					"$(SRCROOT)/Frameworks",
 				);
 				INFOPLIST_FILE = "Derived/InfoPlists/Notizen-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (

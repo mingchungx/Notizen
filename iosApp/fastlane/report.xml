@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="fastlane.lanes">
+    
+    
+    
+      
+      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.0002">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="1: cd ../../ &amp;&amp; ./gradlew assembleSiliconSimulatorFramework" time="0.519717">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="2: cd ../ &amp;&amp; rm -rf Frameworks/Shared.framework" time="0.008834">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="3: cd ../ &amp;&amp; cp -R ../shared/build/bin/iosSimulatorArm64/debugFramework/Shared.framework Frameworks/Shared.framework" time="0.029257">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="4: echo &apos;Success! Run tuist generate (optionally tuist clean &amp;&amp; tuist install) to run in Xcode.&apos;" time="0.005397">
+        
+      </testcase>
+    
+  </testsuite>
+</testsuites>

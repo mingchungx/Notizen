@@ -14,8 +14,7 @@ let project = Project(
             bundleId: "dev.tuist.notizen", 
             sources: ["Sources/Notizen/**"], 
             dependencies: [ 
-                // TODO: This needs to be manually configured
-                .framework(path: "../shared/build/bin/iosSimulatorArm64/debugFramework/Shared.framework"),
+                .framework(path: "Frameworks/Shared.framework"),
                 .external(name: "Kingfisher"),
             ], 
             settings: .settings(configurations: [ 
