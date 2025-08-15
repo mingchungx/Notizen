@@ -97,6 +97,9 @@ Package.resolved
 *.xcodeproj/project.xcworkspace/
 *.xcodeproj/xcuserdata/
 
+# Fastlane
+iosApp/fastlane/report.xml
+
 # =====================
 # macOS
 # =====================
