@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
+    alias(libs.plugins.moko.resources)
 }
 
 kotlin {
@@ -34,6 +35,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             //put your multiplatform dependencies here
+            api(libs.moko.resources)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
@@ -82,4 +84,9 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+}
+
+multiplatformResources {
+    resourcesPackage.set("com.notizen.shared")
+    resourcesClassName.set("SharedRes")
 }
