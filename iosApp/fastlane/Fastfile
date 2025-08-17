@@ -19,27 +19,75 @@ platform :ios do
   desc "Build KMP Shared.framework for Intel simulator"
   lane :build_intel_simulator do |options|
     configuration = options[:configuration] || "Debug"
-    sh "cd ../../ && ./gradlew assembleIntelSimulatorFramework"
+
+    # Generate resources
+    sh "cd ../../ && ./gradlew :shared:generateMR"
+
+    # Remove old bundle
+    sh "cd ../ && rm -rf Resources/shared.bundle"
+
+    # Copy the generated bundle manually
+    sh "cd ../ && cp -R '../shared/build/bin/iosX64/#{configuration.downcase}Framework/Shared.framework/Notizen:shared.bundle' Resources/shared.bundle"
+    
+    # Build the framework
+    sh "cd ../../ && ./gradlew :shared:assembleIntelSimulatorFramework"
+
+    # Remove the old framework
     sh "cd ../ && rm -rf Frameworks/Shared.framework"
+    
+    # Copy the framework
     sh "cd ../ && cp -R ../shared/build/bin/iosX64/#{configuration.downcase}Framework/Shared.framework Frameworks/Shared.framework"
+
     sh "echo 'Success! Run tuist generate (optionally tuist clean && tuist install) to run in Xcode.'"
   end
 
   desc "Build KMP Shared.framework for Apple Silicon simulator"
   lane :build_silicon_simulator do |options|
     configuration = options[:configuration] || "Debug"
-    sh "cd ../../ && ./gradlew assembleSiliconSimulatorFramework"
+  
+    # Generate resources
+    sh "cd ../../ && ./gradlew :shared:generateMR"
+  
+    # Remove old bundle
+    sh "cd ../ && rm -rf Resources/shared.bundle"
+  
+    # Copy the generated bundle manually
+    sh "cd ../ && cp -R '../shared/build/bin/iosSimulatorArm64/#{configuration.downcase}Framework/Shared.framework/Notizen:shared.bundle' Resources/shared.bundle"
+  
+    # Build the framework
+    sh "cd ../../ && ./gradlew :shared:assembleSiliconSimulatorFramework"
+  
+    # Remove old framework
     sh "cd ../ && rm -rf Frameworks/Shared.framework"
+  
+    # Copy the framework
     sh "cd ../ && cp -R ../shared/build/bin/iosSimulatorArm64/#{configuration.downcase}Framework/Shared.framework Frameworks/Shared.framework"
+  
     sh "echo 'Success! Run tuist generate (optionally tuist clean && tuist install) to run in Xcode.'"
   end
 
   desc "Build KMP Shared.framework for physical device"
   lane :build_physical_device do |options|
     configuration = options[:configuration] || "Debug"
-    sh "cd ../../ && ./gradlew assemblePhysicalDeviceFramework"
+      
+    # Generate resources
+    sh "cd ../../ && ./gradlew :shared:generateMR"
+  
+    # Remove old bundle
+    sh "cd ../ && rm -rf Resources/shared.bundle"
+  
+    # Copy the generated bundle manually
+    sh "cd ../ && cp -R '../shared/build/bin/iosArm64/#{configuration.downcase}Framework/Shared.framework/Notizen:shared.bundle' Resources/shared.bundle"
+  
+    # Build the framework
+    sh "cd ../../ && ./gradlew :shared:assembleSiliconSimulatorFramework"
+
+    # Remove old framework
     sh "cd ../ && rm -rf Frameworks/Shared.framework"
+
+    # Copy the framework
     sh "cd ../ && cp -R ../shared/build/bin/iosArm64/#{configuration.downcase}Framework/Shared.framework Frameworks/Shared.framework"
+
     sh "echo 'Success! Run tuist generate (optionally tuist clean && tuist install) to run in Xcode.'"
   end
 end

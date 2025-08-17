@@ -83,6 +83,7 @@ Podfile.lock
 **/Generated/
 **/Tuist/Dependencies/
 **/.tuist/Cache/
+iosApp/Derived/
 
 # Carthage (if used)
 Carthage/Build/

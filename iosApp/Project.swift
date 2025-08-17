@@ -13,6 +13,9 @@ let project = Project(
             product: .app,
             bundleId: "dev.tuist.notizen", 
             sources: ["Sources/Notizen/**"], 
+            resources: [
+                "Resources/**"
+            ],
             dependencies: [ 
                 .framework(path: "Frameworks/Shared.framework"),
                 .external(name: "Kingfisher"),

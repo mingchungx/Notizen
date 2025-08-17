@@ -1,5 +1,5 @@
 <!-- src/commonMain/resources/MR/strings.xml -->
 <resources>
-    <string name="moko_resources">Moko Resources</string>
+    <string name="hello">Hello</string>
 </resources>
 

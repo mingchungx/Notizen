@@ -13,5 +13,8 @@ struct ContentView: View {
     
     var body: some View {
         Text(greeting.greet())
+            .onAppear {
+                debugPrint(greeting.greet())
+            }
     }
 }
