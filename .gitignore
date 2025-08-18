@@ -72,6 +72,7 @@ build/
 *.moved-aside
 *.xcuserstate
 iosApp/Frameworks
+iosApp/Resources/shared.bundle/Contents/Resources/Assets.car
 
 # CocoaPods (if used)
 Pods/

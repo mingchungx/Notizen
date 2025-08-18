@@ -22,6 +22,7 @@ platform :ios do
 
     # Generate resources
     sh "cd ../../ && ./gradlew :shared:generateMR"
+    sh "cd ../ && cp -R '../shared/build/bin/iosX64/#{configuration.downcase}Framework/Shared.framework/Notizen:shared.bundle' Resources/shared.bundle"
 
     # Remove old bundle
     sh "cd ../ && rm -rf Resources/shared.bundle"
@@ -47,15 +48,13 @@ platform :ios do
   
     # Generate resources
     sh "cd ../../ && ./gradlew :shared:generateMR"
+    sh "cd ../../ && ./gradlew :shared:assembleSiliconSimulatorFramework"
   
     # Remove old bundle
     sh "cd ../ && rm -rf Resources/shared.bundle"
   
     # Copy the generated bundle manually
     sh "cd ../ && cp -R '../shared/build/bin/iosSimulatorArm64/#{configuration.downcase}Framework/Shared.framework/Notizen:shared.bundle' Resources/shared.bundle"
-  
-    # Build the framework
-    sh "cd ../../ && ./gradlew :shared:assembleSiliconSimulatorFramework"
   
     # Remove old framework
     sh "cd ../ && rm -rf Frameworks/Shared.framework"
@@ -72,6 +71,7 @@ platform :ios do
       
     # Generate resources
     sh "cd ../../ && ./gradlew :shared:generateMR"
+    sh "cd ../../ && ./gradlew :shared:assembleSiliconSimulatorFramework"
   
     # Remove old bundle
     sh "cd ../ && rm -rf Resources/shared.bundle"
@@ -81,9 +81,6 @@ platform :ios do
   
     # Build the framework
     sh "cd ../../ && ./gradlew :shared:assembleSiliconSimulatorFramework"
-
-    # Remove old framework
-    sh "cd ../ && rm -rf Frameworks/Shared.framework"
 
     # Copy the framework
     sh "cd ../ && cp -R ../shared/build/bin/iosArm64/#{configuration.downcase}Framework/Shared.framework Frameworks/Shared.framework"

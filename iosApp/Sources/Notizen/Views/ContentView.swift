@@ -12,9 +12,20 @@ struct ContentView: View {
     private let greeting = Greeting()
     
     var body: some View {
-        Text(greeting.greet())
-            .onAppear {
-                debugPrint(greeting.greet())
-            }
+        VStack {
+            Text(greeting.greet())
+            img
+        }
+        .onAppear {
+            debugPrint(greeting.greet())
+        }
+    }
+}
+
+private extension ContentView {
+    var img: some View {
+        Image(uiImage: greeting.image.toUIImage()!)
+            .resizable()
+            .scaledToFit()
     }
 }
