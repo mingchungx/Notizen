@@ -16,75 +16,70 @@
 default_platform(:ios)
 
 platform :ios do
-  desc "Build KMP Shared.framework for Intel simulator"
-  lane :build_intel_simulator do |options|
-    configuration = options[:configuration] || "Debug"
-
-    # Generate resources
+  lane :generate_mr do
+    puts "Generating moko resources..."
     sh "cd ../../ && ./gradlew :shared:generateMR"
-    sh "cd ../ && cp -R '../shared/build/bin/iosX64/#{configuration.downcase}Framework/Shared.framework/Notizen:shared.bundle' Resources/shared.bundle"
-
-    # Remove old bundle
-    sh "cd ../ && rm -rf Resources/shared.bundle"
-
-    # Copy the generated bundle manually
-    sh "cd ../ && cp -R '../shared/build/bin/iosX64/#{configuration.downcase}Framework/Shared.framework/Notizen:shared.bundle' Resources/shared.bundle"
-    
-    # Build the framework
-    sh "cd ../../ && ./gradlew :shared:assembleIntelSimulatorFramework"
-
-    # Remove the old framework
-    sh "cd ../ && rm -rf Frameworks/Shared.framework"
-    
-    # Copy the framework
-    sh "cd ../ && cp -R ../shared/build/bin/iosX64/#{configuration.downcase}Framework/Shared.framework Frameworks/Shared.framework"
-
-    sh "echo 'Success! Run tuist generate (optionally tuist clean && tuist install) to run in Xcode.'"
   end
 
-  desc "Build KMP Shared.framework for Apple Silicon simulator"
-  lane :build_silicon_simulator do |options|
-    configuration = options[:configuration] || "Debug"
-  
-    # Generate resources
-    sh "cd ../../ && ./gradlew :shared:generateMR"
-    sh "cd ../../ && ./gradlew :shared:assembleSiliconSimulatorFramework"
-  
-    # Remove old bundle
+  lane :rm_resource_bundle do
+    puts "Removing stale shared.bundle..."
     sh "cd ../ && rm -rf Resources/shared.bundle"
-  
-    # Copy the generated bundle manually
-    sh "cd ../ && cp -R '../shared/build/bin/iosSimulatorArm64/#{configuration.downcase}Framework/Shared.framework/Notizen:shared.bundle' Resources/shared.bundle"
-  
-    # Remove old framework
-    sh "cd ../ && rm -rf Frameworks/Shared.framework"
-  
-    # Copy the framework
-    sh "cd ../ && cp -R ../shared/build/bin/iosSimulatorArm64/#{configuration.downcase}Framework/Shared.framework Frameworks/Shared.framework"
-  
-    sh "echo 'Success! Run tuist generate (optionally tuist clean && tuist install) to run in Xcode.'"
   end
 
-  desc "Build KMP Shared.framework for physical device"
-  lane :build_physical_device do |options|
+  lane :cp_resource_bundle do |options|
+    arch = options[:arch]
+    configuration = options[:configuration]
+    puts "Copying build shared.bundle..."
+
+    sh "cd ../ && cp -R '../shared/build/bin/ios#{arch.capitalize}/#{configuration.downcase}Framework/Shared.framework/Notizen:shared.bundle' Resources/shared.bundle"
+  end
+
+  lane :link_framework do |options|
+    arch = options[:arch]
+    configuration = options[:configuration]
+    puts "Linking framework..."
+
+    sh "cd ../../ && ./gradlew link#{configuration.capitalize}FrameworkIos#{arch.capitalize}"
+  end
+
+  lane :rm_shared_framework do
+    puts "Removing stale shared XC framework..."
+    sh "cd ../ && rm -rf Frameworks/Shared.framework"
+  end
+
+  lane :cp_shared_framework do |options|
+    arch = options[:arch]
+    configuration = options[:configuration]
+    puts "Copying build shared XC framework..."
+
+    sh "cd ../ && cp -R ../shared/build/bin/ios#{arch.capitalize}/#{configuration.downcase}Framework/Shared.framework Frameworks/Shared.framework"
+  end
+
+  lane :run_tuist do
+    puts "Running Tuist project generation..."
+    sh "cd ../ && tuist clean && tuist install && tuist generate"
+  end
+
+  # arch options: X64 (Intel Simulator), SimulatorArm64 (Apple Silicon Simulator), Arm64 (iPhone)
+  # configuration options: Debug, Release
+  lane :build_xc_project do |options|
+    arch = options[:arch]
     configuration = options[:configuration] || "Debug"
-      
-    # Generate resources
-    sh "cd ../../ && ./gradlew :shared:generateMR"
-    sh "cd ../../ && ./gradlew :shared:assembleSiliconSimulatorFramework"
-  
-    # Remove old bundle
-    sh "cd ../ && rm -rf Resources/shared.bundle"
-  
-    # Copy the generated bundle manually
-    sh "cd ../ && cp -R '../shared/build/bin/iosArm64/#{configuration.downcase}Framework/Shared.framework/Notizen:shared.bundle' Resources/shared.bundle"
-  
-    # Build the framework
-    sh "cd ../../ && ./gradlew :shared:assembleSiliconSimulatorFramework"
+    puts "Building KMP Shared.framework with arch:#{arch.downcase} and configuration:#{configuration.downcase}"
 
-    # Copy the framework
-    sh "cd ../ && cp -R ../shared/build/bin/iosArm64/#{configuration.downcase}Framework/Shared.framework Frameworks/Shared.framework"
+    # 1. Generate new resouces and framework
+    generate_mr
+    link_framework(arch: arch, configuration: configuration)
 
-    sh "echo 'Success! Run tuist generate (optionally tuist clean && tuist install) to run in Xcode.'"
+    # 2. Remove old folders
+    rm_resource_bundle
+    rm_shared_framework
+
+    # 3. Copy new builds
+    cp_resource_bundle(arch: arch, configuration: configuration)
+    cp_shared_framework(arch: arch, configuration: configuration)
+
+    # 4. Generate Xcode project
+    run_tuist
   end
 end

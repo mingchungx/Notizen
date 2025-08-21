@@ -15,29 +15,69 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 ## iOS
 
-### ios build_intel_simulator
+### ios generate_mr
 
 ```sh
-[bundle exec] fastlane ios build_intel_simulator
+[bundle exec] fastlane ios generate_mr
 ```
 
-Build KMP Shared.framework for Intel simulator
 
-### ios build_silicon_simulator
+
+### ios rm_resource_bundle
 
 ```sh
-[bundle exec] fastlane ios build_silicon_simulator
+[bundle exec] fastlane ios rm_resource_bundle
 ```
 
-Build KMP Shared.framework for Apple Silicon simulator
 
-### ios build_physical_device
+
+### ios cp_resource_bundle
 
 ```sh
-[bundle exec] fastlane ios build_physical_device
+[bundle exec] fastlane ios cp_resource_bundle
 ```
 
-Build KMP Shared.framework for physical device
+
+
+### ios link_framework
+
+```sh
+[bundle exec] fastlane ios link_framework
+```
+
+
+
+### ios rm_shared_framework
+
+```sh
+[bundle exec] fastlane ios rm_shared_framework
+```
+
+
+
+### ios cp_shared_framework
+
+```sh
+[bundle exec] fastlane ios cp_shared_framework
+```
+
+
+
+### ios run_tuist
+
+```sh
+[bundle exec] fastlane ios run_tuist
+```
+
+
+
+### ios build_xc_project
+
+```sh
+[bundle exec] fastlane ios build_xc_project
+```
+
+
 
 ----
 

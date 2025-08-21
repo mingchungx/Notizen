@@ -41,37 +41,6 @@ kotlin {
             implementation(libs.kotlin.test)
         }
     }
-
-    tasks.register("assembleIntelSimulatorFramework") {
-        group = "build"
-        description = "Assemble Intel macOS iOS simulator framework"
-        dependsOn(iosIntelSimulator.binaries.getFramework("DEBUG").linkTaskName)
-        dependsOn(iosIntelSimulator.binaries.getFramework("RELEASE").linkTaskName)
-    }
-
-    tasks.register("assembleSiliconSimulatorFramework") {
-        group = "build"
-        description = "Assemble Apple Silicon iOS simulator framework"
-        dependsOn(iosSiliconSimulator.binaries.getFramework("DEBUG").linkTaskName)
-        dependsOn(iosSiliconSimulator.binaries.getFramework("RELEASE").linkTaskName)
-    }
-
-    tasks.register("assemblePhysicalDeviceFramework") {
-        group = "build"
-        description = "Assemble physical iOS device framework"
-        dependsOn(iosPhysicalDevice.binaries.getFramework("DEBUG").linkTaskName)
-        dependsOn(iosPhysicalDevice.binaries.getFramework("RELEASE").linkTaskName)
-    }
-
-    tasks.register("assembleSharedXCFramework") {
-        group = "build"
-        description = "Assemble all frameworks for Xcode"
-        dependsOn(
-            "assemblePhysicalDeviceFramework",
-            "assembleIntelSimulatorFramework",
-            "assembleSiliconSimulatorFramework"
-        )
-    }
 }
 
 android {
