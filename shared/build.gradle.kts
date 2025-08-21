@@ -75,7 +75,7 @@ kotlin {
 }
 
 android {
-    namespace = "com.example.notizen"
+    namespace = "dev.mingchungx.notizen"
     compileSdk = 34
     defaultConfig {
         minSdk = 24
@@ -87,6 +87,6 @@ android {
 }
 
 multiplatformResources {
-    resourcesPackage.set("com.notizen.shared")
+    resourcesPackage.set("dev.mingchungx.notizen")
     resourcesClassName.set("SharedRes")
 }

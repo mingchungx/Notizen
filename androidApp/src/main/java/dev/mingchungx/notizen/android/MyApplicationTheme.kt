@@ -1,4 +1,4 @@
-package com.example.notizen.android
+package dev.mingchungx.notizen.android
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.shape.RoundedCornerShape

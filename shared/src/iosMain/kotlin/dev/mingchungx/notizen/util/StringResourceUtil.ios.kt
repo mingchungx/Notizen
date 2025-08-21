@@ -1,4 +1,4 @@
-package com.example.notizen.util
+package dev.mingchungx.notizen.util
 
 import dev.icerock.moko.resources.StringResource
 import dev.icerock.moko.resources.desc.Resource

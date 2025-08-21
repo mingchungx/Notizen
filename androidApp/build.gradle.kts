@@ -5,10 +5,10 @@ plugins {
 }
 
 android {
-    namespace = "com.example.notizen.android"
+    namespace = "dev.mingchungx.notizen.android"
     compileSdk = 34
     defaultConfig {
-        applicationId = "com.example.notizen.android"
+        applicationId = "dev.mingchungx.notizen.android"
         minSdk = 24
         targetSdk = 34
         versionCode = 1

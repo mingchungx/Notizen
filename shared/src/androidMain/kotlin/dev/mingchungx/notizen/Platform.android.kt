@@ -1,4 +1,4 @@
-package com.example.notizen
+package dev.mingchungx.notizen
 
 class AndroidPlatform : Platform {
     override val name: String = "Android ${android.os.Build.VERSION.SDK_INT}"

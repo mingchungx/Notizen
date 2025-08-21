@@ -14,7 +14,9 @@ struct ContentView: View {
     var body: some View {
         VStack {
             Text(greeting.greet())
-            img
+            Image(resource: \.cat)
+                .resizable()
+                .scaledToFit()
         }
         .onAppear {
             debugPrint(greeting.greet())
@@ -22,10 +24,3 @@ struct ContentView: View {
     }
 }
 
-private extension ContentView {
-    var img: some View {
-        Image(uiImage: greeting.image.toUIImage()!)
-            .resizable()
-            .scaledToFit()
-    }
-}

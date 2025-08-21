@@ -1,4 +1,4 @@
-package com.example.notizen
+package dev.mingchungx.notizen
 
 import platform.UIKit.UIDevice
 

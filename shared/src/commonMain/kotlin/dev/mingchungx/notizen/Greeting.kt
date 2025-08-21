@@ -1,8 +1,8 @@
-package com.example.notizen
+package dev.mingchungx.notizen
 
-import com.example.notizen.util.localized
-import com.notizen.shared.SharedRes
+import dev.mingchungx.notizen.util.localized
 import dev.icerock.moko.resources.ImageResource
+import dev.mingchungx.notizen.SharedRes
 
 class Greeting {
     private val platform: Platform = getPlatform()

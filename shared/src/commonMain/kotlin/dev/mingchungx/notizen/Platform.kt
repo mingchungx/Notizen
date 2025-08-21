@@ -1,4 +1,4 @@
-package com.example.notizen
+package dev.mingchungx.notizen
 
 interface Platform {
     val name: String
