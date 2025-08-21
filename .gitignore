@@ -9,6 +9,7 @@ out/
 *.iml
 *.klib
 .kotlin/metadata/
+.kotlin/sessions/
 .gradle/
 .gradle-*/ 
 *.log
