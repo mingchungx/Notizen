@@ -44,6 +44,9 @@ struct ContentView: View {
         .onChange(of: uiState) { _, newValue in
             print("Received newValue: \(newValue)")
         }
+        .onAppear {
+            viewModel.onLaunch()
+        }
     }
 }
 
