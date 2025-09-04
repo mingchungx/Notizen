@@ -9,40 +9,38 @@ import SwiftUI
 import Shared
 
 struct ContentView: View {
-    private let viewModel = ContentViewModel()
-    private let greeting = Greeting()
+    private let viewModel = injectContentViewModel()
     
-    @State private var uiState: UiState
+    @State private var count: KotlinInt
+    @State private var text: String
     
     init() {
-        self._uiState = .init(initialValue: viewModel.uiState.value)
+        self._count = .init(initialValue: viewModel.countFlow.value)
+        self._text = .init(initialValue: viewModel.textFlow.value)
     }
     
     var body: some View {
         VStack {
-            Text(greeting.greet())
-            if !uiState.isLoading {
-                Text(uiState.title)
-            }
-            Text(String(uiState.count))
+            Text(String(Int(truncating: count)))
             Button {
-                viewModel.increment()
+                viewModel.onAction(action: ContentViewModel.ActionIncrement())
             } label: {
                 Text("increment!")
+            }
+            Text(text)
+            Button {
+                viewModel.onAction(action: ContentViewModel.ActionFetchGreeting())
+            } label: {
+                Text("fetch greeting!")
             }
             Image(resource: \.cat)
                 .resizable()
                 .scaledToFit()
         }
-        .animation(.default, value: uiState.isLoading)
-        .animation(.default, value: uiState.count)
-        .onAppear {
-            debugPrint(greeting.greet())
-        }
-        .collect(flow: viewModel.uiState, into: $uiState)
-        .onChange(of: uiState) { _, newValue in
-            print("Received newValue: \(newValue)")
-        }
+        .animation(.default, value: count)
+        .animation(.default, value: text)
+        .collect(flow: viewModel.countFlow, into: $count)
+        .collect(flow: viewModel.textFlow, into: $text)
         .onAppear {
             viewModel.onLaunch()
         }

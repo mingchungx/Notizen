@@ -1,31 +1,41 @@
 package dev.mingchungx.notizen.viewmodel
 
+import dev.mingchungx.notizen.repository.GreetingRepository
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.IO
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-data class UiState(
-    val title: String = "Hello",
-    val count: Int = 0,
-    val isLoading: Boolean = false
-)
+class ContentViewModel(
+    private val greetingRepository: GreetingRepository
+) : BaseViewModel() {
+    sealed class Action {
+        data object Increment : Action()
+        data object FetchGreeting : Action()
+    }
 
-class ContentViewModel : BaseViewModel() {
-    private val _uiState = MutableStateFlow(UiState())
-    val uiState: StateFlow<UiState> = _uiState.asStateFlow()
+    private val _countFlow = MutableStateFlow(0)
+    val countFlow = _countFlow.asStateFlow()
 
-    fun increment() = _uiState.update { it.copy(count = it.count + 1) }
+    private val _textFlow = MutableStateFlow("")
+    val textFlow = _textFlow.asStateFlow()
 
-    override fun onLaunch() {
-        if (_uiState.value.isLoading) return
-        _uiState.update { it.copy(isLoading = true) }
-        scope.launch {
-            delay(100)
-            _uiState.update { it.copy(isLoading = false) }
+    fun onAction(action: Action) {
+        when (action) {
+            Action.Increment -> {
+                _countFlow.update { it + 1 }
+            }
+            Action.FetchGreeting -> {
+                scope.launch {
+                    val result = greetingRepository.fetchGetting()
+                    _textFlow.update { result }
+                }
+            }
         }
     }
 }

@@ -10,9 +10,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import dev.mingchungx.notizen.viewmodel.ContentViewModel
-import dev.mingchungx.notizen.viewmodel.UiState
 import dev.mingchungx.notizen.Greeting
-import kotlinx.coroutines.flow.collectLatest
+import org.koin.compose.koinInject
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,11 +31,11 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun ContentScreen(
-    viewModel: ContentViewModel = remember { ContentViewModel() },
+    viewModel: ContentViewModel = koinInject(),
     greeting: Greeting = Greeting()
 ) {
-    // Collect StateFlow<UiState> as Compose state
-    val uiState by viewModel.uiState.collectAsState()
+    val count by viewModel.countFlow.collectAsState()
+    val text by viewModel.textFlow.collectAsState()
 
     Column(
         modifier = Modifier.fillMaxSize().padding(16.dp),
@@ -44,14 +43,16 @@ fun ContentScreen(
     ) {
         Text(text = greeting.greet(), style = MaterialTheme.typography.titleLarge)
 
-        if (!uiState.isLoading) {
-            Text(text = uiState.title, style = MaterialTheme.typography.bodyLarge)
+        Text(text = "Count: $count", style = MaterialTheme.typography.bodyLarge)
+
+        Button(onClick = { viewModel.onAction(ContentViewModel.Action.Increment) }) {
+            Text("Increment!")
         }
 
-        Text(text = "Count: ${uiState.count}", style = MaterialTheme.typography.bodyLarge)
+        Text(text = "Text: $text", style = MaterialTheme.typography.bodyLarge)
 
-        Button(onClick = { viewModel.increment() }) {
-            Text("Increment!")
+        Button(onClick = { viewModel.onAction(ContentViewModel.Action.FetchGreeting) }) {
+            Text("Fetch Greeting")
         }
     }
 }
