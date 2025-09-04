@@ -96,6 +96,7 @@ kotlin {
             dependencies {
                 implementation(libs.ktor.client.darwin)
                 implementation(libs.sqldelight.native)
+                implementation(libs.kmp.observableviewmodel)
             }
         }
     }
@@ -116,6 +117,12 @@ android {
 multiplatformResources {
     resourcesPackage.set("dev.mingchungx.notizen")
     resourcesClassName.set("SharedRes")
+}
+
+skie {
+    features {
+        enableSwiftUIObservingPreview = true
+    }
 }
 
 sqldelight {

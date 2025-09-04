@@ -11,12 +11,12 @@ androidx-activityCompose = "1.8.0"
 moko-resources = "0.25.0"
 
 # Core MP stack
-coroutines = "1.8.1"
+coroutines = "1.9.0"
 serialization = "1.7.3"
 datetime = "0.6.0"
 immutable = "0.3.7"
 
-ktor = "3.0.0"                # Ktor 3 targets Kotlin 2.0
+ktor = "3.0.0"
 napier = "2.7.1"
 settings = "1.1.1"
 sqldelight = "2.1.0"
