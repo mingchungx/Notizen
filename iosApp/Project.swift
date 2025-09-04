@@ -18,7 +18,13 @@ let project = Project(
             ],
             dependencies: [ 
                 .framework(path: "Frameworks/Shared.framework"),
+                .external(name: "Collections"),
+                .external(name: "Algorithms"),
                 .external(name: "Kingfisher"),
+                .external(name: "Pow"),
+                .external(name: "Vortex"),
+                .external(name: "SwiftUIX"),
+                .external(name: "KMPObservableViewModelSwiftUI"),
             ], 
             settings: .settings(configurations: [ 
                 .debug(name: "Debug", xcconfig: "./xcconfigs/Notizen.xcconfig"), 
