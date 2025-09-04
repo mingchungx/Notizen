@@ -7,7 +7,6 @@
 
 import SwiftUI
 import Shared
-import KMPObservableViewModelSwiftUI
 
 struct ContentView: View {
     private let viewModel = ContentViewModel()

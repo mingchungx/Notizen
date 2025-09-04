@@ -62,9 +62,6 @@ kotlin {
 
                 // DI
                 implementation(libs.koin.core)
-
-                // iOS
-                implementation(libs.kmp.observableviewmodel)
             }
         }
         val commonTest by getting {
@@ -96,7 +93,6 @@ kotlin {
             dependencies {
                 implementation(libs.ktor.client.darwin)
                 implementation(libs.sqldelight.native)
-                implementation(libs.kmp.observableviewmodel)
             }
         }
     }

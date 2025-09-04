@@ -21,6 +21,5 @@ let package = Package(
         .package(url: "https://github.com/EmergeTools/Pow.git", .upToNextMajor(from: "1.0.5")),
         .package(url: "https://github.com/twostraws/Vortex.git", .upToNextMajor(from: "1.0.3")),
         .package(url: "https://github.com/SwiftUIX/SwiftUIX.git", .upToNextMajor(from: "0.2.3")),
-        .package(url: "https://github.com/rickclephas/KMP-ObservableViewModel.git", from: "1.0.0-BETA-13"),
     ]
 )

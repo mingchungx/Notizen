@@ -24,7 +24,6 @@ let project = Project(
                 .external(name: "Pow"),
                 .external(name: "Vortex"),
                 .external(name: "SwiftUIX"),
-                .external(name: "KMPObservableViewModelSwiftUI"),
             ], 
             settings: .settings(configurations: [ 
                 .debug(name: "Debug", xcconfig: "./xcconfigs/Notizen.xcconfig"), 
