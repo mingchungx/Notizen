@@ -5,5 +5,5 @@ import org.koin.dsl.module
 
 val repositoryModule = module {
     // Repositories are typically singletons
-    single<GreetingRepository> { GreetingRepository.Impl(get()) } // needs HttpClient
+    single<GreetingRepository> { GreetingRepository.Impl(get()) }
 }
