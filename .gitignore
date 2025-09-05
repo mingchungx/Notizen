@@ -72,8 +72,8 @@ build/
 *.dSYM
 *.moved-aside
 *.xcuserstate
-iosApp/Frameworks
-iosApp/Resources/shared.bundle/Contents/Resources/Assets.car
+iosApp/Frameworks/
+iosApp/Resources/
 
 # CocoaPods (if used)
 Pods/
