@@ -10,6 +10,8 @@ plugins {
 }
 
 kotlin {
+    applyDefaultHierarchyTemplate()
+
     androidTarget {
         compilations.all {
             compileTaskProvider.configure {
@@ -18,11 +20,7 @@ kotlin {
         }
     }
 
-    val iosIntelSimulator = iosX64()
-    val iosSiliconSimulator = iosSimulatorArm64()
-    val iosPhysicalDevice = iosArm64()
-
-    listOf(iosIntelSimulator, iosSiliconSimulator, iosPhysicalDevice).forEach {
+    listOf(iosX64(), iosSimulatorArm64(), iosArm64()).forEach {
         it.binaries.framework {
             baseName = "Shared"
             isStatic = true
@@ -64,6 +62,7 @@ kotlin {
                 implementation(libs.koin.core)
             }
         }
+        
         val commonTest by getting {
             dependencies {
                 implementation(libs.kotlin.test)
@@ -80,16 +79,7 @@ kotlin {
             }
         }
 
-        val iosX64Main by getting
-        val iosSimulatorArm64Main by getting
-        val iosArm64Main by getting
-
-        val iosMain by creating {
-            dependsOn(commonMain)
-            iosX64Main.dependsOn(this)
-            iosSimulatorArm64Main.dependsOn(this)
-            iosArm64Main.dependsOn(this)
-
+        val iosMain by getting {
             dependencies {
                 implementation(libs.ktor.client.darwin)
                 implementation(libs.sqldelight.native)
