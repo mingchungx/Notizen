@@ -14,9 +14,6 @@ out/
 .gradle-*/ 
 *.log
 
-# Gradle wrapper
-gradle/wrapper/gradle-wrapper.jar
-
 # Dependency caches
 **/.idea/libraries/
 **/.idea/modules.xml
