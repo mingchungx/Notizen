@@ -5,8 +5,8 @@ plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.moko.resources)
     alias(libs.plugins.kotlin.serialization)
-    alias(libs.plugins.sqldelight)
     alias(libs.plugins.skie)
+//    alias(libs.plugins.sqldelight)
 }
 
 kotlin {
@@ -111,10 +111,11 @@ skie {
     }
 }
 
-sqldelight {
-    databases {
-        create("AppDatabase") {
-            packageName.set("dev.mingchungx.notizen.db")
-        }
-    }
-}
+// Schema (AppDatabase.sq) is required for build
+//sqldelight {
+//    databases {
+//        create("AppDatabase") {
+//            packageName.set("dev.mingchungx.notizen.db")
+//        }
+//    }
+//}
