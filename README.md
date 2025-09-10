@@ -23,6 +23,7 @@ The `shared/` directory contains the shared business logic and data layers for i
 The `iosApp/` directory contains the code for the iOS app (Swift / SwiftUI). To run it in Xcode, run the Fastlane script to build and generate the project:
 
 ```bash
+cd iosApp
 fastlane build_xc_project arch:SimulatorArm64 configuration:Debug
 ```
 
