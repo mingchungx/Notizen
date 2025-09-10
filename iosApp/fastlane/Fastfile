@@ -31,6 +31,8 @@ platform :ios do
     configuration = options[:configuration]
     puts "Copying build shared.bundle..."
 
+    sh "cd ../ && mkdir Resources"
+
     sh "cd ../ && cp -R '../shared/build/bin/ios#{arch.capitalize}/#{configuration.downcase}Framework/Shared.framework/Notizen:shared.bundle' Resources/shared.bundle"
   end
 
@@ -51,6 +53,8 @@ platform :ios do
     arch = options[:arch]
     configuration = options[:configuration]
     puts "Copying build shared XC framework..."
+
+    sh "cd ../ && mkdir Frameworks"
 
     sh "cd ../ && cp -R ../shared/build/bin/ios#{arch.capitalize}/#{configuration.downcase}Framework/Shared.framework Frameworks/Shared.framework"
   end
