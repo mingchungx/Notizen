@@ -43,6 +43,7 @@ captures/
 *.dex
 *.class
 *.jar
+!gradle/wrapper/gradle-wrapper.jar
 
 # Android Studio
 .idea/
